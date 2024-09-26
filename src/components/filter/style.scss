@@ -1,0 +1,36 @@
+.filter {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 22px;
+    height: 49px;
+    min-width: 64px;
+    max-width: 400px;
+
+    .container {
+        align-items: center;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        height: 100%;
+        padding: 5px 15px;
+
+        p {
+            font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+            text-transform: capitalize;
+        }
+
+        svg {
+            height: 20px;
+            width: 20px;
+
+            &:first-child {
+                margin-right: 10px;
+            }
+
+            &:last-child {
+                margin-left: 32px;
+            }
+        }
+    }
+}

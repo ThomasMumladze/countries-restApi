@@ -19,8 +19,10 @@ export default Ui;
  *
  * */
 
+import { Filter } from "./filter/Filter";
 import { Search } from "./search/Search";
 
 export const Components = {
+    Filter,
     Search,
 };
