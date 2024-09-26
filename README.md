@@ -1,3 +1,5 @@
+## npm run dev to start application
+
 # Countries Rest API APP
 
 -[node] version founds in [.nvmrc] root of project folder
