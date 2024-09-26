@@ -1,0 +1,18 @@
+.search {
+    align-items: center;
+    border-radius: 8px;
+    display: flex;
+    min-height: 41px;
+    padding: 14px 18px;
+
+    input {
+        font-family: sans-serif;
+        font-size: 1.05rem;
+        padding-left: 18px;
+    }
+
+    svg {
+        height: 19px;
+        width: 19px;
+    }
+}
