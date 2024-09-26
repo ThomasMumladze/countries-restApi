@@ -16,7 +16,7 @@ export const Search = (props: Props) => {
             className="search"
             style={{
                 backgroundColor: isDarkMode ? "#2b3743" : "#FFF",
-                border: isDarkMode ? "solid 1px transparent" : "solid 1px#151c22",
+                border: isDarkMode ? "solid 1px transparent" : "solid 1px #4750585a",
             }}
         >
             <Icon.Search fill={isDarkMode ? "#fff" : "#000"} />
