@@ -3,9 +3,9 @@
     display: flex;
     justify-content: space-between;
     gap: 22px;
-    height: 49px;
+    height: 59px;
     min-width: 64px;
-    max-width: 400px;
+    max-width: 500px;
 
     .container {
         align-items: center;
@@ -29,7 +29,7 @@
             }
 
             &:last-child {
-                margin-left: 32px;
+                margin-left: 52px;
             }
         }
     }
