@@ -1,0 +1,33 @@
+header {
+    align-items: center;
+    background-color: aqua;
+    display: flex;
+    min-height: 64px;
+    padding: 1rem 24px;
+    width: 100%;
+
+    div {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        margin: 0 3rem;
+        width: 100%;
+
+        h1 {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        button {
+            align-items: center;
+            border-radius: 4px;
+            display: flex;
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+            gap: 7px;
+            text-transform: capitalize;
+        }
+    }
+}
