@@ -5,6 +5,7 @@ const Button = styled.button`
     border: solid 1px;
     font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
     padding: 5px 15px;
+    user-select: none;
 `;
 
 export default Button;

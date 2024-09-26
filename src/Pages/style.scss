@@ -7,5 +7,11 @@
         justify-content: space-between;
         margin: 52px auto;
         max-width: 1200px;
+
+        .countrie-filter {
+            align-items: center;
+            display: flex;
+            gap: 16px;
+        }
     }
 }
