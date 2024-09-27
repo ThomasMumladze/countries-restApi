@@ -14,38 +14,52 @@ interface Props {
 
 export const Home = (props: Props) => {
     const { isDarkMode, handleDarkMode } = props;
-    const [searchCountry, setSearchCountry] = useState<string>("");
     const [allCountries, setAllCountries] = useState<null | []>(null);
+    const [searchCountry, setSearchCountry] = useState<string>("");
+    const [searchRegion, setSearchRegion] = useState<string>("");
     const [error, setError] = useState<boolean | null>(null);
 
-    const fetchCountries = (apiCall: any) => {
+    const fetchCountries = (apiCall: Promise<any>) => {
         apiCall
-            .then((response: any) => {
+            .then((response) => {
                 setAllCountries(response.data);
                 setError(null);
             })
-            .catch((error: any) => {
+            .catch((error) => {
                 if (error.response && error.response.status === 404) {
                     setAllCountries([]);
+                } else {
+                    console.error("An error occurred:", error);
+                    setError(true);
                 }
-                console.error("An error occurred:", error);
-                setError(true);
             });
     };
 
     useEffect(() => {
+        let apiCall;
+
         if (searchCountry) {
-            fetchCountries(Api.getCountryByName(searchCountry));
+            apiCall = Api.getCountryByName(searchCountry);
+        } else if (searchRegion) {
+            apiCall = Api.getCountryByRegion(searchRegion);
         } else {
-            fetchCountries(Api.getAllCountries());
+            apiCall = Api.getAllCountries();
         }
 
-        document.addEventListener("keydown", (e) => {
-            if (e.key == "Escape") {
+        fetchCountries(apiCall);
+
+        const handleKeyDown = (e: any) => {
+            if (e.key === "Escape") {
                 setSearchCountry("");
             }
-        });
-    }, [searchCountry]);
+        };
+
+        document.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [searchCountry, searchRegion]);
 
     return (
         <div className="home-page">
@@ -60,7 +74,11 @@ export const Home = (props: Props) => {
                         isDarkMode={isDarkMode}
                     />
                     <div className="countries-filter">
-                        <Components.Filter isDarkMode={isDarkMode} />
+                        <Components.Filter
+                            isDarkMode={isDarkMode}
+                            searchRegion={searchRegion}
+                            setSearchRegion={setSearchRegion}
+                        />
                     </div>
                 </div>
 

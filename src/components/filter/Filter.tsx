@@ -5,10 +5,12 @@ import * as Icon from "react-bootstrap-icons";
 
 interface Props {
     isDarkMode: boolean;
+    searchRegion: string;
+    setSearchRegion: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const Filter = (props: Props) => {
-    const { isDarkMode } = props;
+    const { isDarkMode, searchRegion, setSearchRegion } = props;
 
     const [bgColor, setBgColor] = useState<string>("");
 

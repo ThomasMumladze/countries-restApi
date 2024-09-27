@@ -9,4 +9,9 @@ const getAllCountries = () => {
 const getCountryByName = (countryName: string) => {
     return instance.get(`name/${countryName}`);
 };
-export default { getAllCountries, getCountryByName };
+
+const getCountryByRegion = (countryRegion: string) => {
+    return instance.get(`/region/${countryRegion}`);
+};
+
+export default { getAllCountries, getCountryByName, getCountryByRegion };
