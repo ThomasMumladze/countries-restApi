@@ -1,11 +1,13 @@
 import Button from "./Ui/Button";
 import H1 from "./Ui/H1";
 import Input from "./Ui/Input";
+import P from "./Ui/P";
 
 export const Ui = {
     Button,
     H1,
     Input,
+    P,
 };
 
 export default Ui;
