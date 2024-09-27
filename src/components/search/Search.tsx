@@ -5,11 +5,13 @@ import * as Icon from "react-bootstrap-icons";
 import Ui from "..";
 
 interface Props {
+    onChange: (e: any) => any;
+    value: string;
     isDarkMode: boolean;
 }
 
 export const Search = (props: Props) => {
-    const { isDarkMode } = props;
+    const { isDarkMode, onChange, value } = props;
 
     return (
         <div
@@ -20,7 +22,13 @@ export const Search = (props: Props) => {
             }}
         >
             <Icon.Search fill={isDarkMode ? "#fff" : "#000"} />
-            <Ui.Input type="text" placeholder="Search for countries" style={{ color: isDarkMode ? "#fff" : "#000" }} />
+            <Ui.Input
+                value={value}
+                onChange={(e: any) => onChange(e.target.value)}
+                type="text"
+                placeholder="Search for countries"
+                style={{ color: isDarkMode ? "#fff" : "#000" }}
+            />
         </div>
     );
 };

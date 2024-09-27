@@ -6,4 +6,7 @@ const getAllCountries = () => {
     return instance.get("/all");
 };
 
-export default { getAllCountries };
+const getCountryByName = (countryName: string) => {
+    return instance.get(`name/${countryName}`);
+};
+export default { getAllCountries, getCountryByName };

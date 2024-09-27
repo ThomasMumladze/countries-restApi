@@ -14,12 +14,13 @@ interface Props {
 
 export const Home = (props: Props) => {
     const { isDarkMode, handleDarkMode } = props;
-
+    const [searchCountry, setSearchCountry] = useState<string>("");
     const [allCountries, setAllCountries] = useState<null | []>(null);
 
     useEffect(() => {
         Api.getAllCountries().then((countries) => setAllCountries(countries.data));
-    }, []);
+        Api.getCountryByName(searchCountry).then((country) => setAllCountries(country.data));
+    }, [searchCountry]);
 
     return (
         <div className="home-page">
@@ -27,7 +28,7 @@ export const Home = (props: Props) => {
 
             <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 52px" }}>
                 <div className="countries-search ">
-                    <Components.Search isDarkMode={isDarkMode} />
+                    <Components.Search value={searchCountry} onChange={setSearchCountry} isDarkMode={isDarkMode} />
                     <div className="countries-filter">
                         <Components.Filter isDarkMode={isDarkMode} />
                     </div>
@@ -47,14 +48,14 @@ export const Home = (props: Props) => {
                                     <img src={item.flags.png} alt="..." />
                                 </div>
                                 <div className="country-name">
-                                    <Ui.P>{item.name.common}</Ui.P>
-                                    <Ui.P>
+                                    <Ui.P style={{ color: isDarkMode ? "#ccc" : "#000" }}>{item.name.common}</Ui.P>
+                                    <Ui.P style={{ color: isDarkMode ? "#ccc" : "#000" }}>
                                         <span>capital</span>: {item.capital}
                                     </Ui.P>
-                                    <Ui.P>
+                                    <Ui.P style={{ color: isDarkMode ? "#ccc" : "#000" }}>
                                         <span>region</span>: {item.region}
                                     </Ui.P>
-                                    <Ui.P>
+                                    <Ui.P style={{ color: isDarkMode ? "#ccc" : "#000" }}>
                                         <span>population</span>: {item.population}
                                     </Ui.P>
                                 </div>
