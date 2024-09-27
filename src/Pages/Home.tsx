@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { Header } from "../layouts/Header";
 
-import Ui, { Components } from "../components";
+import { Components } from "../components";
 
 import Api from "../api/Api";
 
@@ -16,10 +16,35 @@ export const Home = (props: Props) => {
     const { isDarkMode, handleDarkMode } = props;
     const [searchCountry, setSearchCountry] = useState<string>("");
     const [allCountries, setAllCountries] = useState<null | []>(null);
+    const [error, setError] = useState<boolean | null>(null);
+
+    const fetchCountries = (apiCall: any) => {
+        apiCall
+            .then((response: any) => {
+                setAllCountries(response.data);
+                setError(null);
+            })
+            .catch((error: any) => {
+                if (error.response && error.response.status === 404) {
+                    setAllCountries([]);
+                }
+                console.error("An error occurred:", error);
+                setError(true);
+            });
+    };
 
     useEffect(() => {
-        Api.getAllCountries().then((countries) => setAllCountries(countries.data));
-        Api.getCountryByName(searchCountry).then((country) => setAllCountries(country.data));
+        if (searchCountry) {
+            fetchCountries(Api.getCountryByName(searchCountry));
+        } else {
+            fetchCountries(Api.getAllCountries());
+        }
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key == "Escape") {
+                setSearchCountry("");
+            }
+        });
     }, [searchCountry]);
 
     return (
@@ -35,32 +60,7 @@ export const Home = (props: Props) => {
                 </div>
 
                 <div className="allCountries">
-                    {allCountries &&
-                        allCountries.map((item: any, index: number) => (
-                            <div
-                                key={index}
-                                style={{
-                                    backgroundColor: isDarkMode ? "#303a43" : "#f6f6f7",
-                                    boxShadow: isDarkMode ? "0 0 12px 0 #000 " : "0 0 12px 0 #bbbbbb",
-                                }}
-                            >
-                                <div className="flat-image">
-                                    <img src={item.flags.png} alt="..." />
-                                </div>
-                                <div className="country-name">
-                                    <Ui.P style={{ color: isDarkMode ? "#ccc" : "#000" }}>{item.name.common}</Ui.P>
-                                    <Ui.P style={{ color: isDarkMode ? "#ccc" : "#000" }}>
-                                        <span>capital</span>: {item.capital}
-                                    </Ui.P>
-                                    <Ui.P style={{ color: isDarkMode ? "#ccc" : "#000" }}>
-                                        <span>region</span>: {item.region}
-                                    </Ui.P>
-                                    <Ui.P style={{ color: isDarkMode ? "#ccc" : "#000" }}>
-                                        <span>population</span>: {item.population}
-                                    </Ui.P>
-                                </div>
-                            </div>
-                        ))}
+                    <Components.CountryCard allCountries={allCountries} error={error} isDarkMode={isDarkMode} />
                 </div>
             </div>
         </div>
