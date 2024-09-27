@@ -29,7 +29,7 @@ const CountryCard = (props: Props) => {
                                     maxWidth: allCountries.length <= 1 ? "335px" : "100%",
                                 }}
                             >
-                                <div className="flat-image">
+                                <div className="flat-image" style={{ userSelect: "none" }}>
                                     <img src={item.flags.png} alt="..." />
                                 </div>
                                 <div className="country-name">

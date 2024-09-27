@@ -53,7 +53,12 @@ export const Home = (props: Props) => {
 
             <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 52px" }}>
                 <div className="countries-search ">
-                    <Components.Search value={searchCountry} onChange={setSearchCountry} isDarkMode={isDarkMode} />
+                    <Components.Search
+                        error={error}
+                        value={searchCountry}
+                        onChange={setSearchCountry}
+                        isDarkMode={isDarkMode}
+                    />
                     <div className="countries-filter">
                         <Components.Filter isDarkMode={isDarkMode} />
                     </div>
