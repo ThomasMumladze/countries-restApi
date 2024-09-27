@@ -16,15 +16,11 @@ export const Search = (props: Props) => {
             className="search"
             style={{
                 backgroundColor: isDarkMode ? "#2b3743" : "#FFF",
-                border: isDarkMode ? "solid 1px transparent" : "solid 1px #4750585a",
+                border: isDarkMode ? "solid 1px rgba(250, 250, 250, 0.5)" : "solid 1px rgba(47, 71, 117, 0.5)",
             }}
         >
             <Icon.Search fill={isDarkMode ? "#fff" : "#000"} />
-            <Ui.Input
-                type="text"
-                placeholder="Search for countries"
-                style={{ color: isDarkMode ? "#fff" : "#000" }}
-            />
+            <Ui.Input type="text" placeholder="Search for countries" style={{ color: isDarkMode ? "#fff" : "#000" }} />
         </div>
     );
 };
