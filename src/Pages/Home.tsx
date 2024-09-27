@@ -28,6 +28,7 @@ export const Home = (props: Props) => {
             .catch((error) => {
                 if (error.response && error.response.status === 404) {
                     setAllCountries([]);
+                    setError(true);
                 } else {
                     console.error("An error occurred:", error);
                     setError(true);
@@ -36,7 +37,7 @@ export const Home = (props: Props) => {
     };
 
     useEffect(() => {
-        let apiCall;
+        let apiCall: any;
 
         if (searchCountry) {
             apiCall = Api.getCountryByName(searchCountry);

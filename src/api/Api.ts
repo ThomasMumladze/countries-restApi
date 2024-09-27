@@ -7,10 +7,12 @@ const getAllCountries = () => {
 };
 
 const getCountryByName = (countryName: string) => {
+    if (typeof countryName != "string") return null;
     return instance.get(`name/${countryName}`);
 };
 
 const getCountryByRegion = (countryRegion: string) => {
+    if (typeof countryRegion != "string") return null;
     return instance.get(`/region/${countryRegion}`);
 };
 
