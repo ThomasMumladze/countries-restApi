@@ -20,11 +20,12 @@ export default Ui;
  *
  *
  * */
-
+import CountryCard from "./countryCard/CountryCard";
 import { Filter } from "./filter/Filter";
 import { Search } from "./search/Search";
 
 export const Components = {
+    CountryCard,
     Filter,
     Search,
 };
