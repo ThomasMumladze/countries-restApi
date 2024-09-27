@@ -1,14 +1,15 @@
 .home-page {
     width: 100%;
 
-    .countrie-search {
+    .countries-search {
         align-items: center;
         display: flex;
         justify-content: space-between;
         margin: 52px auto;
         max-width: 1200px;
+        padding: 0 52px;
 
-        .countrie-filter {
+        .countries-filter {
             align-items: center;
             display: flex;
             gap: 16px;

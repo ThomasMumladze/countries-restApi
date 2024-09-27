@@ -16,9 +16,9 @@ export const Home = (props: Props) => {
         <div className="home-page">
             <Header isDarkMode={isDarkMode} handleDarkMode={handleDarkMode} />
 
-            <div className="countrie-search ">
+            <div className="countries-search ">
                 <Components.Search isDarkMode={isDarkMode} />
-                <div className="countrie-filter">
+                <div className="countries-filter">
                     <Components.Filter isDarkMode={isDarkMode} />
                 </div>
             </div>

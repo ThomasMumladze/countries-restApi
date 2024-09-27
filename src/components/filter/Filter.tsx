@@ -14,25 +14,7 @@ export const Filter = (props: Props) => {
             <div
                 className="container"
                 style={{
-                    border: isDarkMode
-                        ? "solid 1px rgba(250, 250, 250, 0.5)"
-                        : "solid 1px rgba(47, 71, 117, 0.5)",
-                    color: isDarkMode ? "#fff" : "#000",
-                }}
-            >
-                <Icon.Funnel />
-                <p>
-                    sort by <span>: </span>
-                </p>
-                <Icon.CaretDown />
-            </div>
-
-            <div
-                className="container"
-                style={{
-                    border: isDarkMode
-                        ? "solid 1px rgba(250, 250, 250, 0.5)"
-                        : "solid 1px rgba(47, 71, 117, 0.5)",
+                    border: isDarkMode ? "solid 1px rgba(250, 250, 250, 0.5)" : "solid 1px rgba(47, 71, 117, 0.5)",
                     color: isDarkMode ? "#fff" : "#000",
                 }}
             >
