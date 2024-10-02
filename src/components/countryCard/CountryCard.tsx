@@ -33,7 +33,9 @@ const CountryCard = (props: Props) => {
                                     <img src={item.flags.png} alt="..." />
                                 </div>
                                 <div className="country-name">
-                                    <Ui.P style={{ color: isDarkMode ? "#ccc" : "#000" }}>{item.name.common}</Ui.P>
+                                    <Ui.P style={{ color: isDarkMode ? "#ccc" : "#000" }}>
+                                        {item.name.common}
+                                    </Ui.P>
                                     <Ui.P style={{ color: isDarkMode ? "#ccc" : "#000" }}>
                                         <span>capital</span>: {item.capital}
                                     </Ui.P>
