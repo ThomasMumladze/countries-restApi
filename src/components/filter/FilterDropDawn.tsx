@@ -48,7 +48,7 @@ const FilterDropDawn = (props: Props) => {
                 {["africa", "america", "asia", "europe", "oceania"].map((region) => (
                     <li
                         key={region}
-                        onClick={(e) => handleRegionSearch(region)}
+                        onClick={() => handleRegionSearch(region)}
                         style={{
                             backgroundColor:
                                 activeRegion === region ? (isDarkMode ? "#1c2730" : "#e2e2e2") : "transparent",
