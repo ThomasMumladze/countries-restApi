@@ -3,12 +3,14 @@ import "./style.scss";
 import Ui from "..";
 
 interface Props {
-    error: boolean | null;
-    isDarkMode: boolean;
     allCountries: [] | null;
+    isDarkMode: boolean;
+    error: boolean | null;
+    viewCountryCode: any;
 }
+
 const CountryCard = (props: Props) => {
-    const { error, allCountries, isDarkMode } = props;
+    const { error, allCountries, isDarkMode, viewCountryCode } = props;
 
     return (
         <>
@@ -21,6 +23,7 @@ const CountryCard = (props: Props) => {
                     {allCountries &&
                         allCountries.map((item: any, index: number) => (
                             <div
+                                onClick={() => viewCountryCode(item.cca2)}
                                 className="countryCard"
                                 key={index}
                                 style={{
@@ -33,9 +36,7 @@ const CountryCard = (props: Props) => {
                                     <img src={item.flags.png} alt="..." />
                                 </div>
                                 <div className="country-name">
-                                    <Ui.P style={{ color: isDarkMode ? "#ccc" : "#000" }}>
-                                        {item.name.common}
-                                    </Ui.P>
+                                    <Ui.P style={{ color: isDarkMode ? "#ccc" : "#000" }}>{item.name.common}</Ui.P>
                                     <Ui.P style={{ color: isDarkMode ? "#ccc" : "#000" }}>
                                         <span>capital</span>: {item.capital}
                                     </Ui.P>
