@@ -3,16 +3,15 @@ import { useEffect, useRef, useState } from "react";
 
 import * as Icon from "react-bootstrap-icons";
 
-import Ui from "..";
+import FilterDropDawn from "./FilterDropDawn";
 
 interface Props {
     isDarkMode: boolean;
-    searchRegion: string;
     setSearchRegion: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const Filter = (props: Props) => {
-    const { isDarkMode, searchRegion, setSearchRegion } = props;
+    const { isDarkMode, setSearchRegion } = props;
 
     const [isMenuOpen, setIsMenuOpen] = useState<boolean | null>(null);
     const menuRef = useRef<HTMLDivElement>(null);
@@ -52,9 +51,7 @@ export const Filter = (props: Props) => {
             <div
                 className="container"
                 style={{
-                    border: isDarkMode
-                        ? "solid 1px rgba(250, 250, 250, 0.5)"
-                        : "solid 1px rgba(47, 71, 117, 0.5)",
+                    border: isDarkMode ? "solid 1px rgba(250, 250, 250, 0.5)" : "solid 1px rgba(47, 71, 117, 0.5)",
                     color: isDarkMode ? "#fff" : "#000",
                     backgroundColor: bgColor,
                 }}
@@ -67,16 +64,7 @@ export const Filter = (props: Props) => {
                 <Icon.CaretDown style={{ transform: isMenuOpen ? "rotate(90deg)" : "rotate(0deg)" }} />
             </div>
             {isMenuOpen ? (
-                <div
-                    className="filter-dropDawn"
-                    ref={menuRef}
-                    style={{
-                        backgroundColor: isDarkMode ? "#2b3743" : "#FFF",
-                        border: isDarkMode
-                            ? "solid 1px rgba(250, 250, 250, 0.5)"
-                            : "solid 1px rgba(47, 71, 117, 0.5)",
-                    }}
-                ></div>
+                <FilterDropDawn isDarkMode={isDarkMode} menuRef={menuRef} setSearchRegion={setSearchRegion} />
             ) : null}
         </div>
     );
