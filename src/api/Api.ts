@@ -16,4 +16,8 @@ const getCountryByRegion = (countryRegion: string) => {
     return instance.get(`/region/${countryRegion}`);
 };
 
-export default { getAllCountries, getCountryByName, getCountryByRegion };
+const getCountryByCca2code = (cca2: string) => {
+    return instance.get(`/alpha/${cca2}`);
+};
+
+export default { getAllCountries, getCountryByName, getCountryByRegion, getCountryByCca2code };
