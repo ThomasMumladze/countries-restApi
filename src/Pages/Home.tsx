@@ -50,12 +50,12 @@ export const Home = (props: Props) => {
     useEffect(() => {
         let apiCall: any;
 
-        if (searchCountry) {
-            apiCall = Api.getCountryByName(searchCountry);
+        if (countryCode) {
+            apiCall = Api.getCountryByCca2code(countryCode);
         } else if (searchRegion) {
             apiCall = Api.getCountryByRegion(searchRegion);
-        } else if (countryCode) {
-            apiCall = Api.getCountryByCca2code(countryCode);
+        } else if (searchCountry) {
+            apiCall = Api.getCountryByName(searchCountry);
         } else {
             apiCall = Api.getAllCountries();
         }
