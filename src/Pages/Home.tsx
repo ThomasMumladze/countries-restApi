@@ -77,8 +77,8 @@ export const Home = (props: Props) => {
                     <div className="countries-filter">
                         <Components.Filter
                             isDarkMode={isDarkMode}
-                            searchRegion={searchRegion}
                             setSearchRegion={setSearchRegion}
+                            searchRegion={searchRegion}
                         />
                     </div>
                 </div>
